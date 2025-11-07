@@ -16,9 +16,17 @@ jobs:
         uses: actions/setup-node@v4.2.0
         with:
           node-version: 22.x
+          cache: 'npm'
 
       - name: Install Dependencies
         run: npm install
 
       - name: Build Angular App
         run: npm run build
+
+      - name: Upload Build on Artifacts
+        uses: actions/upload-artifact@v5.0.0
+        with:
+          name: Artifact
+          path: out/
+                
